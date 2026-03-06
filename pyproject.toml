@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=67.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "la-latincy-lookups"
+version = "1.0.0"
+description = "Latin lookup tables for LatinCy spaCy pipelines"
+license = "MIT"
+requires-python = ">=3.9"
+dependencies = ["spacy>=3.8.0,<4.0.0"]
+authors = [
+    {name = "Patrick J. Burns"}
+]
+
+[project.urls]
+Homepage = "https://github.com/latincy/la-latincy-lookups"
+
+[project.entry-points."spacy_lookups"]
+la = "la_latincy_lookups:la"
+
+[tool.setuptools.packages.find]
+include = ["la_latincy_lookups*"]
+
+[tool.setuptools.package-data]
+la_latincy_lookups = ["data/*.json"]
