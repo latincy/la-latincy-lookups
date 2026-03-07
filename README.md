@@ -2,26 +2,18 @@
 
 Latin lookup tables for [LatinCy](https://github.com/diyclassics/latincy) spaCy pipelines.
 
-When installed in the same environment as spaCy, this package registers Latin lookup data via spaCy's entry point system, making it available to any `la` pipeline that uses lookup-based lemmatization. Replaces the heavier general-purpose `spacy-lookups-data` package.
+When installed in the same environment as spaCy, this package registers Latin lookup data via spaCy's entry point system, making it available to any `la` pipeline that uses lookup-based lemmatization.
 
 ## Contents
 
 | Table | Entries | Sources |
 |-------|---------|---------|
-| `lemma_lookup` | 948,252 | Kaikki Wiktionary, UD treebanks, CLTK |
+| `lemma_lookup` | 948,252 | CLTK Morpheus, Kaikki Wiktionary, UD treebanks |
 
 ## Installation
 
 ```bash
-pip install la-latincy-lookups
-```
-
-Or install from source:
-
-```bash
-git clone https://github.com/latincy/la-latincy-lookups.git
-cd la-latincy-lookups
-pip install .
+pip install git+https://github.com/latincy/la-latincy-lookups.git
 ```
 
 **Note:** The lookup JSON file is tracked with [Git LFS](https://git-lfs.github.com/). Make sure Git LFS is installed before cloning.
