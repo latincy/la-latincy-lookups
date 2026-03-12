@@ -36,4 +36,4 @@ table = lookups.get_table("lemma_lookup")
 
 ## License
 
-Code: MIT. Lookup data derived from Wiktionary (CC BY-SA 3.0) and Universal Dependencies treebanks (CC BY-NC-SA 3.0). See [latincy-words](https://github.com/diyclassics/latincy-words) for full provenance and citations.
+Code: MIT. Lookup data derived from Wiktionary (CC BY-SA 3.0) and Universal Dependencies treebanks (CC BY-NC-SA 3.0). See [latincy-words](https://github.com/latincy/latincy-words) for full provenance and citations.
