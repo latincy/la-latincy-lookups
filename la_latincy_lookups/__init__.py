@@ -1,7 +1,7 @@
 """Latin lookup tables for LatinCy spaCy pipelines.
 
-Provides lemma_lookup table (948K entries) via spaCy's lookup entry point
-system. Sources: Kaikki Wiktionary, UD treebanks, CLTK.
+Provides lemma_lookup table (~910K entries) via spaCy's lookup entry point
+system. Sources: Kaikki Wiktionary, UD treebanks.
 
 Usage:
     from spacy.lookups import load_lookups

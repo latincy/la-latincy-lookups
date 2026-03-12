@@ -8,7 +8,7 @@ When installed in the same environment as spaCy, this package registers Latin lo
 
 | Table | Entries | Sources |
 |-------|---------|---------|
-| `lemma_lookup` | 948,252 | CLTK Morpheus, Kaikki Wiktionary, UD treebanks |
+| `lemma_lookup` | 909,669 | Kaikki Wiktionary, UD treebanks |
 
 ## Installation
 
@@ -36,4 +36,4 @@ table = lookups.get_table("lemma_lookup")
 
 ## License
 
-MIT
+Code: MIT. Lookup data derived from Wiktionary (CC BY-SA 3.0) and Universal Dependencies treebanks (CC BY-NC-SA 3.0). See [latincy-words](https://github.com/diyclassics/latincy-words) for full provenance and citations.
