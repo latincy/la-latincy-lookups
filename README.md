@@ -13,10 +13,10 @@ When installed in the same environment as spaCy, this package registers Latin lo
 ## Installation
 
 ```bash
-pip install git+https://github.com/latincy/la-latincy-lookups.git
+pip install la-latincy-lookups
 ```
 
-**Note:** The lookup JSON file is tracked with [Git LFS](https://git-lfs.github.com/). Make sure Git LFS is installed before cloning.
+**Note:** For development, the lookup JSON file in the source repo is tracked with [Git LFS](https://git-lfs.github.com/). Make sure Git LFS is installed before cloning.
 
 ## Usage
 
