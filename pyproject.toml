@@ -6,15 +6,21 @@ build-backend = "setuptools.build_meta"
 name = "la-latincy-lookups"
 version = "1.0.0"
 description = "Latin lookup tables for LatinCy spaCy pipelines"
+readme = "README.md"
 license = "MIT"
 requires-python = ">=3.9"
 dependencies = ["spacy>=3.8.0,<4.0.0"]
 authors = [
     {name = "Patrick J. Burns"}
 ]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Topic :: Text Processing :: Linguistic",
+]
 
 [project.urls]
-Homepage = "https://github.com/latincy/la-latincy-lookups"
+Homepage = "https://huggingface.co/latincy"
+Repository = "https://github.com/latincy/la-latincy-lookups"
 
 [project.entry-points."spacy_lookups"]
 la = "la_latincy_lookups:la"

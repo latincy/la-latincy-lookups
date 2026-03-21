@@ -3,3 +3,7 @@ __pycache__/
 dist/
 build/
 .venv/
+.claude/
+.DS_Store
+.idea/
+.vscode/

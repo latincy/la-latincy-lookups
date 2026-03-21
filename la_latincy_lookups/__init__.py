@@ -9,6 +9,8 @@ Usage:
     table = lookups.get_table("lemma_lookup")
 """
 
+__version__ = "1.0.0"
+
 from importlib.resources import files
 
 
