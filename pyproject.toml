@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "la-latincy-lookups"
-version = "1.0.0"
+version = "1.1.0"
 description = "Latin lookup tables for LatinCy spaCy pipelines"
 license = "CC-BY-NC-SA-4.0"
 requires-python = ">=3.9"
