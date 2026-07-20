@@ -36,4 +36,4 @@ table = lookups.get_table("lemma_lookup")
 
 ## License
 
-Code: MIT. Lookup data derived from Wiktionary (CC BY-SA 3.0) and Universal Dependencies treebanks (CC BY-NC-SA 3.0). See [latincy-words](https://github.com/latincy/latincy-words) for full provenance and citations.
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). This package is a dataset, so it carries a content license rather than a software license. The lookup data is derived from Wiktionary (CC BY-SA 3.0) and Universal Dependencies treebanks (CC BY-NC-SA 3.0); the non-commercial terms of UD PROIEL and ITTB require the NC clause. See [latincy-words](https://github.com/latincy/latincy-words) for full provenance and citations.
