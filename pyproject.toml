@@ -16,12 +16,17 @@ dependencies = []
 authors = [
     {name = "Patrick J. Burns"}
 ]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Topic :: Text Processing :: Linguistic",
+]
 
 [project.optional-dependencies]
 spacy = ["spacy>=3.8.0,<4.0.0"]
 
 [project.urls]
-Homepage = "https://github.com/latincy/la-latincy-lookups"
+Homepage = "https://huggingface.co/latincy"
+Repository = "https://github.com/latincy/la-latincy-lookups"
 
 [project.entry-points."spacy_lookups"]
 la = "la_latincy_lookups:la"
