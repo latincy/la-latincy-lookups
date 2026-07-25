@@ -4,21 +4,32 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "la-latincy-lookups"
-version = "1.1.0"
-description = "Latin lookup tables for LatinCy spaCy pipelines"
+version = "1.2.0"
+description = "Latin lookup tables and lemma-overlay helper for LatinCy NLP pipelines"
 readme = "README.md"
 license = "CC-BY-NC-SA-4.0"
 requires-python = ">=3.9"
-dependencies = ["spacy>=3.8.0,<4.0.0"]
+# Core (lemma_lookup table + apply_lemma_lookup) is pure standard library, so
+# Stanza/UDPipe/Flair venvs can depend on it without pulling in spaCy. spaCy is
+# only needed for entry-point table discovery from within spaCy itself.
+dependencies = []
 authors = [
     {name = "Patrick J. Burns"}
 ]
+
+[project.optional-dependencies]
+spacy = ["spacy>=3.8.0,<4.0.0"]
 
 [project.urls]
 Homepage = "https://github.com/latincy/la-latincy-lookups"
 
 [project.entry-points."spacy_lookups"]
 la = "la_latincy_lookups:la"
+
+[tool.pytest.ini_options]
+markers = [
+    "integration: exercises the real ~42 MB shipped table (slower)",
+]
 
 [tool.setuptools.packages.find]
 include = ["la_latincy_lookups*"]
