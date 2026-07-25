@@ -12,9 +12,10 @@ Design notes
   that keeps it usable inside the torch/stanza/flair venvs without dragging
   spaCy (thinc/blis/pydantic) into them. spaCy is only needed by spaCy itself,
   which discovers the shipped table via the ``spacy_lookups`` entry point.
-* **Lemma-only.** Unlike the spaCy function (which also rewrites PUNCT POS),
-  this never touches POS — in the target frameworks POS comes from separate
-  models/columns we must not clobber.
+* **Lemma-only.** Unlike the spaCy function (which rewrites PUNCT POS *and*
+  forces punctuation lemmas to the surface form), this never touches POS and
+  applies no punctuation special-casing — in the target frameworks POS and
+  punct lemmas come from separate models/columns we must not clobber.
 * **Injectable table.** ``apply_lemma_lookup`` accepts an optional ``table`` so
   experiments can swap alternative dictionaries (homograph-excluded, POS-keyed,
   long-tail-only) into the same harness without changing callers. The default
@@ -27,6 +28,11 @@ Modes (the ``mode`` argument) form a coverage/caution gradient for ablation:
                     or an identity copy of the surface form). Minimal risk.
 * ``"pos_gated"`` - table override for every hit EXCEPT proper nouns.
 * ``"override"``  - table override on every hit (spaCy parity). Max coverage.
+
+The default is ``"fallback"`` — the only mode shown *not* to regress lemma
+accuracy on strong models (see the la-latincy-lookups ablation report);
+``"override"`` reproduces spaCy's unconditional behavior and wins on weak
+models only.
 
 All non-``off`` modes apply the same final normalization spaCy does: lowercase
 the initial character of a non-PROPN lemma.
@@ -85,7 +91,7 @@ def apply_lemma_lookup(
     is_sent_start: bool,
     predicted_lemma: Optional[str],
     *,
-    mode: str = "override",
+    mode: str = "fallback",
     is_enclitic: bool = False,
     table: Optional[Dict[str, str]] = None,
 ) -> Optional[str]:
@@ -104,7 +110,8 @@ def apply_lemma_lookup(
     predicted_lemma:
         The lemma the model produced (may be ``None``/empty).
     mode:
-        One of :data:`MODES`. See the module docstring.
+        One of :data:`MODES`. Defaults to ``"fallback"`` (the non-regressing
+        mode). See the module docstring.
     is_enclitic:
         If ``True``, the token is left untouched (enclitics are handled
         upstream by the framework's own harmonization). Frameworks that do not
@@ -128,7 +135,7 @@ def apply_lemma_lookup(
 
     lemma = predicted_lemma
     if mode == "fallback":
-        model_punted = (not predicted_lemma) or (predicted_lemma == text)
+        model_punted = (not predicted_lemma) or (predicted_lemma.lower() == text.lower())
         if hit is not None and model_punted:
             lemma = hit
     elif mode == "pos_gated":

@@ -83,6 +83,27 @@ def test_fallback_respects_confident_model():
                               mode="fallback", table=TBL) == "puella_model"
 
 
+def test_fallback_identity_copy_is_case_insensitive():
+    # model copied the surface form but capitalized it (e.g. sentence-initial)
+    # -> still a punt; fill from the table rather than keep the copy.
+    assert apply_lemma_lookup("puellam", "NOUN", False, "Puellam",
+                              mode="fallback", table=TBL) == "puella"
+
+
+# ---------------------------------------------------------------------------
+# default mode is "fallback" (non-regressing), not "override"
+# ---------------------------------------------------------------------------
+
+def test_default_mode_is_fallback():
+    # no mode= -> confident model is respected even on a table hit (fallback),
+    # NOT overridden (which is what mode="override" would do).
+    assert apply_lemma_lookup("puellam", "NOUN", False, "puella_model",
+                              table=TBL) == "puella_model"
+    # and a punt is still filled from the table
+    assert apply_lemma_lookup("puellam", "NOUN", False, "",
+                              table=TBL) == "puella"
+
+
 # ---------------------------------------------------------------------------
 # sentence-initial capitalized-common-noun fallback
 # ---------------------------------------------------------------------------

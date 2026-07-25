@@ -12,7 +12,7 @@ spaCy usage (entry-point discovery):
 Framework-agnostic usage (Stanza / UDPipe / Flair — no spaCy required):
     from la_latincy_lookups import apply_lemma_lookup
     lemma = apply_lemma_lookup(word.text, word.upos, is_sent_start,
-                               word.lemma, mode="override")
+                               word.lemma)  # default mode="fallback"
 """
 
 from importlib.resources import files
