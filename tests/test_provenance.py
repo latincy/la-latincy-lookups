@@ -1,5 +1,5 @@
 """Regression tests pinning the vendored lemma_lookup table to its known-good
-source (latincy-words commit 8b0b641, post harmonize-citation-conventions merge).
+source (latincy-words commit 38dbb9e, irregular-verb suppletive-form fix).
 
 These guard against silently re-vendoring a stale or truncated table: if the
 entry count or any of the assimilation-fold spot checks drift, either the
@@ -24,16 +24,17 @@ def _load_provenance():
 def test_provenance_file_present_and_well_formed():
     prov = _load_provenance()
     assert prov["source_repo"] == "https://github.com/latincy/latincy-words"
-    assert prov["source_commit"] == "8b0b64161e025699d3e0d69748aa4165876e6cd6"
-    assert prov["entry_count"] == 1502959
+    assert prov["source_commit"] == "38dbb9e36f06efdd2554e9d6b10c9411a2d9563c"
+    assert prov["entry_count"] == 1502968
 
 
 @pytest.mark.integration
 def test_real_table_entry_count_pinned():
-    # Pins the shipped table to the post-harmonization latincy-words build.
-    # Was 1,502,867 (v1.2.0, stale); now 1,502,959 (v1.2.1, re-vendored).
+    # Pins the shipped table to the irregular-verb-fix latincy-words build.
+    # Was 1,502,867 (v1.2.0, stale); 1,502,959 (v1.2.1, harmonize-citation-conventions);
+    # now 1,502,968 (v1.2.2, +9 curated irregular-verb overrides).
     tbl = load_lemma_lookup()
-    assert len(tbl) == 1502959
+    assert len(tbl) == 1502968
 
 
 @pytest.mark.integration
