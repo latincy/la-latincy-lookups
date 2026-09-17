@@ -8,7 +8,7 @@ When installed in the same environment as spaCy, this package registers Latin lo
 
 | Table | Entries | Sources |
 |-------|---------|---------|
-| `lemma_lookup` | 1,502,968 | Wiktionary (Kaikki), UD treebanks |
+| `lemma_lookup` | 1,502,997 | Wiktionary (Kaikki), UD treebanks |
 
 ## Installation
 
